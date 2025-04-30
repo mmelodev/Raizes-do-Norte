@@ -25,17 +25,15 @@ function nextSlide() {
   showSlide(nextIndex);
 }
 
-// autoplay
 function startCarousel() {
   interval = setInterval(nextSlide, 3000);
 }
 
-// controle via clique
 dots.forEach((dot) => {
   dot.addEventListener("click", () => {
     const index = parseInt(dot.dataset.index);
     showSlide(index);
-    clearInterval(interval); // reinicia autoplay
+    clearInterval(interval); 
     startCarousel();
   });
 });

@@ -93,3 +93,34 @@ CELULAR -> ATÉ WITDH 390PX
 TABLET -> ATÉ WITDH 834PX
 
 DESKTOP -> ACIMA DE 834PX
+
+-------------------
+
+Sobre mudar quebra de linha e outras coisas com css puro, exemplo de um cara do stack overflow:
+'
+
+Use <br/> as normal, but hide it with display: none
+I would expect most people finding this question are looking to use responsive design to decide whether or not a line-break appears in a specific place.
+
+While not immediately obvious, you can apply display:none to a <br/> in order to hide it.
+
+br { display: none; }
+This means you can use media queries just as you would for any other css.
+
+<div>
+  The quick brown fox<br />
+  jumps over the lazy dog
+</div>
+
+
+@media screen and (min-width: 20em) {
+  br {
+    /* hide the BR tag for wider screens (i.e. no line break) */
+    display: none; 
+  }
+}
+This can be useful if you need to force a line break in a different place based on the screen width. And of course you can also use &nbsp; if you want to always prevent a line break from happening in a specific place.
+
+'
+
+------------------------------------
