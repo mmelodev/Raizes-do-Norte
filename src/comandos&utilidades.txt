@@ -1,0 +1,95 @@
+🌿 Nome fictício da empresa
+Raízes do Norte
+
+📍 Localização fictícia:
+Travessa Tucumã, 1450 – Bairro do Marco, Belém - PA
+CEP: 66093-030
+
+📞 Contato fictício:
+Telefone/WhatsApp: (91) 98765-4321
+E-mail: contato@tucupieacai.com.br
+
+🧭 Estrutura do site
+1. Hero Section (capa principal)
+Imagem de destaque: tigela de açaí, prato regional (ex: maniçoba, tacacá).
+
+Texto:
+
+Headline: “O melhor da Amazônia em cada colherada.”
+
+CTA: [Ver Cardápio] [Pedir no WhatsApp]
+
+2. Sobre nós
+Missão: “Levar os sabores autênticos da Amazônia para todos os paladares, com respeito à cultura e ingredientes locais.”
+
+Destaques: uso de ingredientes naturais, produção artesanal, tradição paraense.
+
+3. Cardápio interativo
+Categorias:
+
+Açaí (tradicional, com cupuaçu, com banana)
+
+Pratos regionais (tacacá, maniçoba, vatapá)
+
+Lanches (salgados, tapiocas)
+
+Bebidas (suco de taperebá, bacaba, buriti)
+
+Use tabs ou accordion com JS simples para alternar categorias.
+
+4. Galeria de Imagens
+Grid com fotos vibrantes dos produtos.
+
+Animação de zoom com hover (Tailwind ou CSS puro).
+
+5. Depoimentos
+Estilo carrossel com frases de clientes fictícios:
+
+“Melhor açaí que já comi na vida!” – Joana, Nazaré
+
+“Pedi pelo WhatsApp e chegou rapidinho!” – Marcos, Umarizal
+
+6. Localização e contato
+Mapa interativo do Google Maps (pode usar imagem estática se for fictício).
+
+Formulário de contato ou botão direto para WhatsApp.
+
+🎨 Estilo visual
+Paleta de cores:
+
+Roxo açaí (#4B164C)
+
+Amarelo tucupi (#F4D35E)
+
+Verde folha (#587B48)
+
+Branco gelo (#FBFAF5)
+
+Tipografia:
+
+Títulos: Playfair Display (elegante e rústica)
+
+Texto base: Inter ou Open Sans (moderna e legível)
+
+Ícones e elementos visuais:
+
+Ícones personalizados: folha, cuia, mandioca, tigela de açaí (->criar barra que se movimenta horizontalmente e infinitamente com esses icones)
+
+Texturas leves: madeira, palha, folha amazônica
+
+✅ Extra: ideias para diferencial no site
+Área “Monte seu pedido”: com JS simples e dropdowns.
+
+Blog com receitas e curiosidades da Amazônia.
+
+Animações sutis no scroll com framer-motion (caso queira usar mais JS no futuro).
+
+-----------------
+
+TAMANHO E RESPONSIVIDADE
+
+CELULAR -> ATÉ WITDH 390PX
+
+TABLET -> ATÉ WITDH 834PX
+
+DESKTOP -> ACIMA DE 834PX

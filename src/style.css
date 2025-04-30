@@ -1,0 +1,228 @@
+header {
+  width: 100%;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  font-family: "Inter", sans-serif;
+}
+
+span {
+  font-family: "Inter", sans-serif;
+}
+
+.logo-nav {
+  width: 80px;
+  height: 80px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navgeral {
+  background-color: rgba(75, 22, 76, 0.9); /* cor com transparência */
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px 20px;
+  backdrop-filter: blur(4px); /* opcional: dá efeito de vidro */
+}
+
+.navbloco {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fbfaf5;
+}
+
+.slider-header {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.img-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.img-slider.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: #fbfaf5;
+}
+
+.dropdown-menu {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.dropdown-menu {
+  display: none;
+  flex-direction: column; /* ou block, conforme seu layout */
+  gap: 1rem;
+}
+
+.dropdown-menu.active {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu-itens {
+  font-family: "Playfair Display", serif;
+}
+
+.menu-itens ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-itens ul > li > a {
+  color: #fbfaf5;
+  font-weight: 600;
+  font-size: large;
+}
+
+.menu-itens a:hover {
+  color: #587b48;
+}
+
+.btn-menuburger button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #587b48;
+  background-color: #f4d35e;
+  color: #4b164c;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-menuburger button > a {
+  color: #587b48;
+  font-weight: 800;
+  font-size: medium;
+}
+
+.scroll {
+  position: relative;
+  width: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  z-index: 1;
+  padding: 0;
+  background-color: #FBFAF5;
+}
+
+.scroll img {
+  height: 50px;
+  min-width: 50px;
+  padding: 0 60px;
+}
+
+.m-scroll {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: scrollText 30s infinite linear;
+  margin: 0;
+  font-size: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  height: 100px;
+}
+
+span {
+  display: inline-block;
+  width: fit-content;
+  margin: 0 20px;
+  padding: 0;
+  color: white;
+}
+
+span.blank {
+  width: 500px !important;
+}
+
+span.FARAL {
+  width: 800px !important;
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-90%);
+  }
+}

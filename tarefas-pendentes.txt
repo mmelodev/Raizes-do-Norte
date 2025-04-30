@@ -1,0 +1,7 @@
+-> adicionar hover nos links de navegação
+
+->criar carrossel de imagens no header
+
+-> adicionar barra com os icones que se move horizontalmente 
+
+-> adicionar botão de cardapio e logo abaixo a seção de cardapio
