@@ -1,3 +1,7 @@
+body {
+  padding-top: 100px; /* Compensa a navbar fixa */
+}
+
 header {
   width: 100%;
 }
@@ -61,8 +65,18 @@ span {
 .slider-header {
   position: relative;
   width: 100%;
-  height: 550px;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  max-height: 1080px; /* Limite máximo igual à altura da sua imagem */
   overflow: hidden;
+  margin-top: -80px; /* Compensa a navbar fixa */
+  padding-top: 80px; /* Espaço para a navbar */
+}
+
+@media (min-width: 1024px) {
+  .slider-header {
+    height: 100vh; /* Altura menor para mobile */
+    max-height: none;
+  }
 }
 
 .slides {
@@ -71,63 +85,93 @@ span {
   height: 100%;
 }
 
+/* Regras base para todas as imagens */
 .img-slider {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%; /* Foco no centro superior */
+}
+
+.slides {
+  transform-style: preserve-3d;
+}
+
+.img-slider {
   opacity: 0;
-  transition: opacity 1s ease-in-out;
-  z-index: 0;
-  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .img-slider.active {
   opacity: 1;
-  z-index: 1;
-  pointer-events: auto;
 }
 
+.slider-header:hover .img-slider {
+  transform: scale(1.03);
+}
+
+/* Controle de visibilidade */
+.img-slider.mobile-only {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.img-slider.desktop-only {
+  object-fit: contain; /* Mostra a imagem completa */
+  object-position: center top; /* Alinha no topo */
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .img-slider.mobile-only {
+    display: none;
+  }
+
+  .img-slider.desktop-only {
+    display: block;
+  }
+
+  .img-slider.desktop-only {
+    object-fit: cover; /* Volta ao crop em mobile */
+  }
+}
+
+/* Dots de navegação */
 .dots {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 10px;
-  z-index: 2;
+  gap: 12px;
+  z-index: 10;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background-color: #fff;
-  opacity: 0.6;
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  transition: background-color 0.3s, opacity 0.3s;
+  transition: all 0.3s;
 }
 
 .dot.active {
-  opacity: 1;
-  background-color: #fbfaf5;
-}
-
-.dropdown-menu {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
+  background: #f4d35e;
+  transform: scale(1.2);
 }
 
 .dropdown-menu {
   display: none;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .dropdown-menu.active {
@@ -169,17 +213,20 @@ a {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .btn-menuburger button:hover {
   background-color: #4b164c;
   color: #fbfaf5;
+  cursor: pointer;
 }
 
 .btn-menuburger button > a {
   color: #587b48;
   font-weight: 800;
   font-size: medium;
+  cursor: pointer;
 }
 
 .scroll {
@@ -322,6 +369,7 @@ span.FARAL {
   font-weight: 800;
   font-family: "Inter", sans-serif;
   font-size: medium;
+  cursor: pointer;
 }
 
 .btn-cardapio-main button:hover {
@@ -364,11 +412,11 @@ span.FARAL {
   word-break: break-all;
 }
 
-.ifood{
+.ifood {
   background-color: #f4d35e;
 }
 
-.ifood-content{
+.ifood-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,12 +425,12 @@ span.FARAL {
   padding: 40px 40px;
 }
 
-.ifood-content img{
+.ifood-content img {
   width: 56px;
   height: 76px;
 }
 
-.ifood-content p{
+.ifood-content p {
   color: #fbfaf5;
   font-size: medium;
   font-weight: 500;
@@ -405,13 +453,13 @@ span.FARAL {
 .local-title {
   font-size: 1.875rem;
   font-weight: 600;
-  color: #F5F5F5;
+  color: #f5f5f5;
   text-align: center;
   font-family: "Playfair Display", serif;
 }
 
 .local-description {
-  color: #F5F5F5;
+  color: #f5f5f5;
   text-align: center;
   font-family: "Inter", sans-serif;
 }
@@ -432,7 +480,7 @@ span.FARAL {
 }
 
 .contato-text {
-  color: #F5F5F5;
+  color: #f5f5f5;
   font-weight: 600;
   font-family: "Inter", sans-serif;
 }
@@ -463,4 +511,166 @@ span.FARAL {
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.6;
+}
+
+/* ===== DESKTOP (1024px+) ===== */
+@media (min-width: 1024px) {
+  header {
+    width: 100%;
+  }
+
+  .navbloco {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Para posicionamento absoluto dos filhos */
+  }
+
+  /* Logo absolutamente centralizada */
+  .logo-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Menu dropdown - transforma em linha */
+  .dropdown-menu {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Itens do menu em linha */
+  .menu-itens ul {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 2rem;
+    margin: 0;
+    padding: 16px 0;
+  }
+
+  /* Esconde o ícone do menu hamburger */
+  .toggle-button {
+    display: none;
+  }
+  /* Botão CTA */
+  .btn-menuburger button {
+    margin: 0;
+    padding: 12px 24px;
+    transition: all 0.3s;
+  }
+
+  /* Slider */
+  .slider-header {
+    height: 650px;
+  }
+
+  /* Efeitos hover */
+  .menu-itens a {
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  .menu-itens a:hover {
+    color: #f4d35e !important;
+  }
+
+  .menu-itens a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f4d35e;
+    transition: width 0.3s;
+  }
+
+  .menu-itens a:hover::after {
+    width: 100%;
+  }
+
+  .cardapio-main {
+    padding-bottom: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .galeria-cardapio {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .pratocardapio {
+    height: 250px;
+    width: 250px;
+    border-radius: 12px;
+  }
+
+  .pratocardapio .overlay {
+    font-size: 1.125rem;
+    background-color: rgba(75, 22, 76, 0.7); /* Roxo semi-transparente */
+  }
+
+  .pratocardapio:hover img {
+    transform: scale(1.05); /* Zoom sutil ao passar o mouse */
+  }
+
+  .btn-cardapio-main button {
+    padding: 1rem 3rem;
+    font-size: 1.125rem;
+    border-radius: 12px;
+  }
+
+  .quem-somos {
+    padding: 4rem 1.5rem; /* Espaçamento maior */
+  }
+
+  .quem-somos-content {
+    flex-direction: row; /* Logo e texto em linha */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 4rem; /* Espaço maior entre logo e texto */
+    max-width: 1200px; /* Limita largura (padrão das outras seções) */
+    margin: 0 auto; /* Centraliza na tela */
+  }
+
+  .quem-somos-logo img {
+    width: 150px; /* Logo maior */
+    height: 150px;
+  }
+
+  .quem-somos-texto h3 {
+    font-size: 1.125rem; /* Texto mais legível */
+    max-width: 600px; /* Limita largura do texto */
+    word-break: normal; /* Remove quebra forçada de palavras */
+    line-height: 1.6; /* Melhora espaçamento entre linhas */
+  }
+
+  .ifood {
+    padding: 0 1.5rem; /* Adiciona padding lateral para evitar colar nas bordas */
+  }
+
+  .ifood-content {
+    flex-direction: row; /* Conteúdo em linha (imagem + texto lado a lado) */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 2rem; /* Espaço maior entre imagem e texto */
+    padding: 4rem 2rem; /* Espaçamento interno maior */
+    max-width: 1200px; /* Limita a largura (igual à seção de localização) */
+    margin: 0 auto; /* Centraliza na tela */
+  }
+
+  .ifood-content img {
+    width: 80px; /* Imagem maior */
+    height: auto; /* Mantém proporção */
+  }
+
+  .ifood-content p {
+    font-size: 1.125rem; /* Texto mais legível */
+    text-align: left; /* Alinhamento à esquerda (quando em linha) */
+    max-width: 500px; /* Evita linhas muito longas */
+  }
 }

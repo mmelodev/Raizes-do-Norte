@@ -5,38 +5,66 @@ toggleButton.addEventListener("click", () => {
   dropdownMenu.classList.toggle("active");
 });
 
-const slides = document.querySelectorAll(".img-slider");
-const dots = document.querySelectorAll(".dot");
-let currentIndex = 0;
-let interval;
+//--------
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.remove("active");
-    dots[i].classList.remove("active");
+document.addEventListener("DOMContentLoaded", function () {
+  const dots = document.querySelectorAll(".dot");
+  const mobileSlides = document.querySelectorAll(".img-slider.mobile-only");
+  const desktopSlides = document.querySelectorAll(".img-slider.desktop-only");
+  let currentIndex = 0;
+  let slideInterval;
+
+  function getActiveSlides() {
+    return window.innerWidth >= 1024 ? desktopSlides : mobileSlides;
+  }
+
+  function showSlide(index) {
+    // Remove todas as classes active primeiro
+    document.querySelectorAll(".img-slider").forEach((img) => {
+      img.classList.remove("active");
+    });
+
+    // Ativa o slide correto
+    const slides = getActiveSlides();
+    if (slides[index]) {
+      slides[index].classList.add("active");
+    }
+
+    // Atualiza os dots
+    dots.forEach((dot) => dot.classList.remove("active"));
+    if (dots[index]) {
+      dots[index].classList.add("active");
+    }
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const slides = getActiveSlides();
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  // Inicia o slider
+  function startSlider() {
+    clearInterval(slideInterval);
+    showSlide(0);
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  // Controle por dots
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      clearInterval(slideInterval);
+      showSlide(parseInt(dot.dataset.index));
+      slideInterval = setInterval(nextSlide, 5000);
+    });
   });
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-  currentIndex = index;
-}
 
-function nextSlide() {
-  const nextIndex = (currentIndex + 1) % slides.length;
-  showSlide(nextIndex);
-}
-
-function startCarousel() {
-  interval = setInterval(nextSlide, 3000);
-}
-
-dots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    const index = parseInt(dot.dataset.index);
-    showSlide(index);
-    clearInterval(interval); 
-    startCarousel();
+  // Redimensionamento
+  window.addEventListener("resize", () => {
+    showSlide(currentIndex);
   });
+
+  startSlider();
 });
-
-showSlide(currentIndex);
-startCarousel();
